@@ -40,9 +40,12 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
-      {latitude}
-      <Homepage latitude={latitude} longitude={longitude} />
+      {latitude & longitude && (
+        <>
+          <Navbar />
+          <Homepage latitude={latitude} longitude={longitude} />
+        </>
+      )}
     </div>
   );
 }

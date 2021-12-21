@@ -1,3 +1,22 @@
 @tailwind base;
+@font-face {
+  font-family: 'Mcs_Swer_Al_Quran_2';
+  src: url('/public/fonts/Mcs_Swer_Al_Quran_2.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'QuranSurah01-w1yO6';
+  src: url('/public/fonts/QuranSurah01-w1yO6.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'quran_common';
+  src: url('/public/fonts/quran_common.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: '_PDMS_Saleem_QuranFont';
+  src: url('/public/fonts/_PDMS_Saleem_QuranFont.ttf') format('truetype');
+}
 @tailwind components;
 @tailwind utilities;

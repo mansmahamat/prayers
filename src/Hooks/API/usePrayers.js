@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 
 const getPrayers = async (longitude, latitude) => {
   const { data } = await axios.get(
-    `https://api.pray.zone/v2/times/today.json?longitude=${longitude}&latitude=${latitude}&elevation=333`
+    `https://api.pray.zone/v2/times/today.json?longitude=${longitude}&latitude=${latitude}&elevation=333&school=1`
   );
 
   return data;

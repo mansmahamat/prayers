@@ -5,7 +5,11 @@ type Props = {
 };
 
 const Background = ({ children }: Props) => {
-  return <div className="bg-white dark:bg-black transition-all">{children}</div>;
+  return (
+    <div className="bg-white dark:bg-black text-black dark:text-white text-lg transition-all">
+      {children}
+    </div>
+  );
 };
 
 export default Background;

@@ -2,6 +2,13 @@ module.exports = {
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
   darkMode: 'class',
   theme: {
+    fontFamily: {
+      quran: ['Mcs_Swer_Al_Quran_2', 'Helvetica', 'Arial', 'sans-serif'],
+      beautiful: ['QuranSurah01-w1yO6', 'sans-serif'],
+      otherquran: ['quran_common', 'sans-serif'],
+      sans: ['_PDMS_Saleem_QuranFont', 'sans-serif']
+    },
+
     container: {
       center: true,
 
