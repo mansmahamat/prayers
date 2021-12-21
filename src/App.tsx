@@ -1,22 +1,48 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Navbar from './components/Navbar';
+
+import Homepage from './pages/Homepage';
 
 function App() {
+  const [latitude, setLatitude] = useState<number>(0);
+  const [longitude, setLongitude] = useState<number>(0);
+
+  // const getLocation = () => {
+  //   if (!navigator.geolocation) {
+  //     // @ts-ignore
+  //     setStatus('Geolocation is not supported by your browser');
+  //   } else {
+  //     // @ts-ignore
+  //     setStatus('Locating...');
+  //     navigator.geolocation.getCurrentPosition(
+  //       (position) => {
+  //         // @ts-ignore
+
+  //         setLatitude(position.coords.latitude);
+  //         // @ts-ignore
+
+  //         setLongitude(position.coords.longitude);
+  //       },
+  //       () => {}
+  //     );
+  //   }
+  // };
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      // @ts-ignore
+      setLatitude(position.coords.latitude);
+      //@ts-ignore
+      setLongitude(position.coords.longitude);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header bg-pink-400">
-        <img src={logo} className="App-logo" alt="logo" />
-
-        <h1 className="text-3xl font-bold underline">Hello world!</h1>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
+      <Navbar />
+      {latitude}
+      <Homepage latitude={latitude} longitude={longitude} />
     </div>
   );
 }
