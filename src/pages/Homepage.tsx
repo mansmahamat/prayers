@@ -9,7 +9,7 @@ type Props = {
 };
 
 function Homepage({ longitude, latitude }: Props) {
-  const today = moment().format('D-MM-YYYY');
+  const today = moment().format('DD-MM-YYYY');
   const prayers = useGetPrayers(longitude, latitude);
   const dates = useGetDate(today);
 
@@ -20,6 +20,7 @@ function Homepage({ longitude, latitude }: Props) {
         <span className="ml-2">{dates?.data?.data?.hijri?.month?.en} </span>
         {dates?.data?.data?.hijri?.year}
       </p>
+      <p>{today}</p>
 
       <ul>
         <li>Asr : {prayers?.data?.results.datetime[0].times.Fajr}</li>
