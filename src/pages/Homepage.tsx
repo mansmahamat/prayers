@@ -14,7 +14,7 @@ function Homepage({ longitude, latitude }: Props) {
   const dates = useGetDate(today);
 
   return (
-    <div>
+    <div className="container mx-auto h-screen">
       <p>
         {dates?.data?.data?.hijri?.day}{' '}
         <span className="ml-2">{dates?.data?.data?.hijri?.month?.en} </span>
