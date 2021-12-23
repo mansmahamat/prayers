@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 //@ts-ignore
 import AlgoliaPlaces from 'algolia-places-react';
 import { useTranslation } from 'react-i18next';
@@ -26,6 +26,7 @@ function App() {
   const [loading, setLoading] = useState<boolean>(true);
   const [modal, setModal] = useState(true);
   const [info, setInfo] = useState(true);
+  const saved = localStorage.getItem('city');
 
   const [city, setCity] = useState<TProduct>({
     country: '',
@@ -35,6 +36,12 @@ function App() {
     county: ''
   });
   const { t, i18n } = useTranslation();
+  console.log(saved);
+
+  useEffect(() => {
+    // storing input name
+    localStorage.setItem('city', JSON.stringify(city));
+  }, [city]);
 
   return (
     <div className="App container ">
@@ -115,7 +122,7 @@ function App() {
                 Deactivate
               </button>
               <button
-                disabled={Object.keys(city).length === 0}
+                disabled={Object.keys(city.name).length === 0}
                 type="button"
                 className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm"
                 onClick={() => setModal(false)}>
