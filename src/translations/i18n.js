@@ -16,7 +16,7 @@ i18next
     // Remove resources from here
 
     detection: DETECTION_OPTIONS,
-    supportedLngs: ['en', 'fr'],
+    supportedLngs: ['en', 'fr', 'ar'],
     nonExplicitSupportedLngs: true,
     fallbackLng: 'en',
     interpolation: {

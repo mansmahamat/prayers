@@ -1,3 +1,5 @@
 {
-    "splashscreen.title.ask.city": "D'où venez-vous ?"
+    "splashscreen.title.ask.city": "D'où venez-vous ?",
+    "splashscreen.input.placeholder.ask.city": "Ecrivez votre ville "
+
 }

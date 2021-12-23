@@ -1,4 +1,5 @@
-import React from 'react';
+/* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import { useGetPrayers } from '../Hooks/API/usePrayers';
 import moment from 'moment';
 import { useGetDate } from '../Hooks/API/useDates';
@@ -35,26 +36,7 @@ function Homepage({ longitude, latitude }: Props) {
 
   console.log(closest);
 
-  return (
-    <div className="container mx-auto h-screen">
-      <p>
-        {dates?.data?.data?.hijri?.day}{' '}
-        <span className="ml-2">{dates?.data?.data?.hijri?.month?.en} </span>
-        {dates?.data?.data?.hijri?.year}
-      </p>
-
-      {Object.entries(prayers?.data?.results.datetime[0].times).map(([key, value]) => {
-        if (closest === value)
-          return (
-            <div key={key}>
-              Next prayers is {key} : {value}
-            </div>
-          );
-      })}
-
-      <p>{today}</p>
-    </div>
-  );
+  return <div></div>;
 }
 
 export default Homepage;

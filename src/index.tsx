@@ -6,6 +6,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Background from './utils/Backgound';
 import { ThemeProvider } from './context/ThemeContext';
+import { BrowserRouter } from 'react-router-dom';
 import Toggle from './components/Toggle';
 import './translations/i18n';
 import Translate from './components/Translate';
@@ -29,7 +30,9 @@ ReactDOM.render(
             <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
               <Toggle />
             </div>
-            <App />
+            <BrowserRouter>
+              <App />
+            </BrowserRouter>
           </Background>
         </ThemeProvider>
       </React.Suspense>
