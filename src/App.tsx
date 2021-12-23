@@ -1,74 +1,56 @@
-import React, { useEffect, useState } from 'react';
+/* eslint-disable no-undef */
+import React, { useState } from 'react';
+//@ts-ignore
+import AlgoliaPlaces from 'algolia-places-react';
 import './App.css';
-import Navbar from './components/Navbar';
+import { useTranslation } from 'react-i18next';
+import { withTranslation } from 'react-i18next';
+// import Navbar from './components/Navbar';
 
-import Homepage from './pages/Homepage';
+// import Homepage from './pages/Homepage';
 
 function App() {
-  const [latitude, setLatitude] = useState<number>(0);
-  const [longitude, setLongitude] = useState<number>(0);
+  // eslint-disable-next-line no-unused-vars
   const [loading, setLoading] = useState<boolean>(true);
+  const [city, setCity] = useState<object>({});
+  const { t } = useTranslation();
 
-  // const getLocation = () => {
-  //   if (!navigator.geolocation) {
-  //     // @ts-ignore
-  //     setStatus('Geolocation is not supported by your browser');
-  //   } else {
-  //     // @ts-ignore
-  //     setStatus('Locating...');
-  //     navigator.geolocation.getCurrentPosition(
-  //       (position) => {
-  //         // @ts-ignore
-
-  //         setLatitude(position.coords.latitude);
-  //         // @ts-ignore
-
-  //         setLongitude(position.coords.longitude);
-  //       },
-  //       () => {}
-  //     );
-  //   }
-  // };
-
-  useEffect(() => {
-    navigator.geolocation.getCurrentPosition(function (position) {
-      // @ts-ignore
-      setLatitude(position.coords.latitude);
-      //@ts-ignore
-      setLongitude(position.coords.longitude);
-    });
-  }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-  }, []);
+  console.log(city);
 
   return (
     <div className="App container w-full h-full">
       {loading ? (
-        <section className="font-medium h-screen rounded-b-10xl py-24 2xl:pt-52 2xl:pb-40">
-          <div className="fixed top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
-            <div className="loader ease-linear rounded-full border-4 border-t-4 border-green-400 h-12 w-12 mb-4"></div>
-            <h2 className="text-center  text-xl font-semibold">Loading...</h2>
-            <p className="w-1/3 text-center ">
-              This may take a few seconds, please dont close this page.
-            </p>
+        <section className="font-medium h-full rounded-b-10xl py-24 2xl:pt-52 2xl:pb-40">
+          <div className=" top-0 left-0 right-0 bottom-0 w-full h-screen z-50 overflow-hidden  opacity-75 flex flex-col items-center justify-center">
+            <h1>
+              <strong>{t('splashscreen.title.ask.city')}</strong>
+            </h1>
+
+            <AlgoliaPlaces
+              placeholder="Write an address here"
+              options={{
+                appId: process.env.REACT_APP_APPLICATION_ID,
+                apiKey: process.env.REACT_APP_API_KEY,
+                type: 'city'
+                // Other options from https://community.algolia.com/places/documentation.html#options
+              }}
+              //@ts-ignore
+              onChange={(suggestion) => setCity(suggestion.suggestion)}
+            />
           </div>
         </section>
       ) : (
         <>
-          {latitude && (
+          {/* {latitude && (
             <>
               <Navbar />
               <Homepage latitude={latitude} longitude={longitude} />
             </>
-          )}
+          )} */}
         </>
       )}
     </div>
   );
 }
 
-export default App;
+export default withTranslation()(App);

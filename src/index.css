@@ -15,8 +15,27 @@
 }
 
 @font-face {
-  font-family: '_PDMS_Saleem_QuranFont';
-  src: url('/public/fonts/_PDMS_Saleem_QuranFont.ttf') format('truetype');
+  font-family: 'PlayfairDisplaySC-Regular';
+  src: url('/public/fonts/PlayfairDisplaySC-Regular.otf') format('truetype');
+}
+
+.ap-input,
+.ap-suggestion,
+.ap-address {
+  color: green;
+  font-weight: 900;
+}
+
+input::placeholder {
+  color: green;
+}
+
+.ap-icon-pin svg,
+.ap-icon-clear svg,
+.ap-suggestion-icon svg,
+.ap-suggestion-icon:hover svg {
+  fill: green;
+  stroke: green;
 }
 @tailwind components;
 @tailwind utilities;

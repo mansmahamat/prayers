@@ -7,6 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import Background from './utils/Backgound';
 import { ThemeProvider } from './context/ThemeContext';
 import Toggle from './components/Toggle';
+import './translations/i18n';
+import Translate from './components/Translate';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -20,14 +22,17 @@ const queryClient = new QueryClient({
 ReactDOM.render(
   <React.StrictMode>
     <QueryClientProvider client={queryClient}>
-      <ThemeProvider initialTheme="">
-        <Background>
-          <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
-            <Toggle />
-          </div>
-          <App />
-        </Background>
-      </ThemeProvider>
+      <React.Suspense fallback="Loading...">
+        <ThemeProvider initialTheme="">
+          <Background>
+            <Translate />
+            <div className="absolute right-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6">
+              <Toggle />
+            </div>
+            <App />
+          </Background>
+        </ThemeProvider>
+      </React.Suspense>
     </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
