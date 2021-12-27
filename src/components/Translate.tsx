@@ -63,7 +63,7 @@ function Translate() {
   }
 
   return (
-    <div className="absolute left-0 top-0 mr-4 mt-4 md:mr-6 md:mt-6" ref={containerRef}>
+    <div className="" ref={containerRef}>
       <div className="flex flex-wrap">
         <div className="w-full sm:w-6/12 md:w-4/12 px-4">
           <div className="relative inline-flex align-middle w-full">
