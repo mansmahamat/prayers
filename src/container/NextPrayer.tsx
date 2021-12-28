@@ -28,7 +28,7 @@ function NextPrayer({
 }: Prayer) {
   return (
     <div className="p-2">
-      <div className="max-w-full  border flex flex-col rounded overflow-hidden  shadow-lg">
+      <div className="max-w-full h-full border flex flex-col rounded overflow-hidden  shadow-lg">
         <div className="flex text-black   border-b   flex-row items-baseline flex-nowrap bg-green-400 p-2">
           <FaCalendarAlt />
           <h1 className="ml-2 uppercase font-bold ">Today</h1>
@@ -71,7 +71,7 @@ function NextPrayer({
 
           <div className="flex flex-wrap p-2 items-center text-black rounded-lg bg-green-400">
             <p className="font-bold">
-              - {timeLeft > 1 && <span> {timeLeft} hours :</span>}
+              - {timeLeft > 1 && <span> {timeLeft} hours : </span>}
               {timeRight} minutes
             </p>
           </div>

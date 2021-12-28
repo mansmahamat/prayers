@@ -19,6 +19,17 @@
   src: url('/public/fonts/PlayfairDisplaySC-Regular.otf') format('truetype');
 }
 
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html,
+body {
+  height: 100vh;
+  padding: 0;
+}
+
 .ap-input,
 .ap-suggestion,
 .ap-address {

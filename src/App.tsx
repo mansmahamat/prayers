@@ -36,9 +36,9 @@ function App() {
   //@ts-ignore
 
   return (
-    <div className="App  ">
+    <div className="h-full">
       <Navbar notification={notification} setNotification={setNotification} />
-      <div className="App container mx-auto ">
+      <div className="container mx-auto ">
         <Routes>
           <Route path="/" element={<City />} />
 

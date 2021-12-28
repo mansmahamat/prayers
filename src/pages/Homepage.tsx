@@ -29,7 +29,7 @@ function Homepage({ notification }: Notifications) {
   //@ts-ignore
   const localCity = JSON.parse(localStorage.getItem('city')) || {};
   const prayers = useGetPrayers(localCity?.latlng?.lng, localCity.latlng.lat);
-  const weekPrayers = useGetWeekPrayers(localCity?.latlng?.lng, localCity.latlng.lat);
+  const { data: weekPrayers } = useGetWeekPrayers(localCity?.latlng?.lng, localCity.latlng.lat);
   const dates = useGetDate(today);
 
   useEffect(() => {
@@ -144,57 +144,53 @@ function Homepage({ notification }: Notifications) {
   }, [timeLeft, timeRight, notification]);
 
   return (
-    <div className="h-screen mt-24">
+    <div className=" mb-12">
       <div>
-        <div>
-          {times.map((time, index) => {
-            if (time.time === next?.format('HH:mm')) {
-              return (
-                <NextPrayer
-                  key={index}
-                  today={today}
-                  now={now}
-                  prayerName={time.name}
-                  prayerIcon={time.icon}
-                  countryCode={countryCode}
-                  city={localCity.name}
-                  country={localCity.country}
-                  timeLeft={timeLeft}
-                  timeRight={timeRight}
-                  rise={rise}
-                />
-              );
-            }
-            return null;
-          })}
-        </div>
-
-        <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
-          {times.map((item) => (
-            <div
-              key={item.name}
-              style={{
-                backgroundImage: `url(${backgroundMosque})`,
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundBlendMode: 'multiply',
-                backgroundColor: item.color
-              }}
-              className=" opacity-80 pt-5 px-4 pb-12 sm:pt-6 sm:px-6 rounded-lg overflow-hidden">
-              <dt className="flex space-x-8">
-                <div className=" bg-green-500 flex justify-center rounded-md">{item.icon}</div>
-                <p className="ml-16 font-bold text-white  truncate">{item.name}</p>
-              </dt>
-              <dd className="ml-16 justify-center rounded py-2  flex bg-green-400 items-baseline ">
-                <p className="text-xl text-black font-black ">{item.time}</p>
-              </dd>
-            </div>
-          ))}
-        </dl>
-
-        <Table weekPrayers={weekPrayers} />
+        {times.map((time, index) => {
+          if (time.time === next?.format('HH:mm')) {
+            return (
+              <NextPrayer
+                key={index}
+                today={today}
+                now={now}
+                prayerName={time.name}
+                prayerIcon={time.icon}
+                countryCode={countryCode}
+                city={localCity.name}
+                country={localCity.country}
+                timeLeft={timeLeft}
+                timeRight={timeRight}
+                rise={rise}
+              />
+            );
+          }
+          return null;
+        })}
       </div>
+      <dl className="mt-5 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-5">
+        {times.map((item) => (
+          <div
+            key={item.name}
+            style={{
+              backgroundImage: `url(${backgroundMosque})`,
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              backgroundBlendMode: 'multiply',
+              backgroundColor: item.color
+            }}
+            className=" opacity-80 pt-5 px-4 pb-12 sm:pt-6 sm:px-6 rounded-lg overflow-hidden">
+            <dt className="flex space-x-8">
+              <div className=" bg-green-500 flex justify-center rounded-md">{item.icon}</div>
+              <p className="ml-16 font-bold text-white  truncate">{item.name}</p>
+            </dt>
+            <dd className="ml-16 justify-center rounded py-2  flex bg-green-400 items-baseline ">
+              <p className="text-xl text-black font-black ">{item.time}</p>
+            </dd>
+          </div>
+        ))}
+      </dl>
+      <Table weekPrayers={weekPrayers} />
     </div>
   );
 }
