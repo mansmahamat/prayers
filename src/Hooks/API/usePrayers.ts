@@ -5,7 +5,7 @@ import PrayerWeek from '../../types/PrayerWeek';
 
 const getPrayers = async (longitude: string, latitude: string): Promise<Prayer> => {
   const { data } = await axios.get<Prayer>(
-    `https://api.pray.zone/v2/times/today.json?longitude=${longitude}&latitude=${latitude}&elevation=333&school=1`
+    `https://api.pray.zone/v2/times/today.json?longitude=${longitude}&latitude=${latitude}&elevation=333&school=2`
   );
 
   return data;
